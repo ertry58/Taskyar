@@ -1,0 +1,233 @@
+* {
+    font-family: Vazir;
+}
+body {
+    background-color: #dee1e6;
+    margin: 0;
+}
+header {
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 100px;
+}
+.menu {
+    position: relative;
+}
+.taskyar {
+    padding: 10px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom 0.6s;
+}
+.taskyar:hover {
+    border-bottom: 3px solid rgb(1, 119, 255);
+}
+.navy {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    background-color: rgba(255, 255, 255, 0.15);  /* شفافیت ساده */
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    z-index: 100;
+    min-width: 60px;
+}
+
+/* برای خوانایی متن روی پس‌زمینه شفاف */
+.taskyar:hover .navy {
+    display: block;
+}
+.navy a {
+    display: block;
+    padding: 8px ;
+    text-decoration: none;
+    color: black;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom 1s;
+
+}
+.navy a:hover {
+    background-color: #f0f0f0;
+    border-bottom: 3px rgb(1, 119, 255) solid;
+    
+}
+.LOGO {
+    width: 5em;
+    height: 5em;
+}
+.hero{
+    display: flex;
+    justify-content: space-between;
+    margin: 60px auto ;
+    
+}
+.hero-text{
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 4px 12px rgba(2, 153, 253, 0.384);
+    background-color: white;
+    padding: 20px;
+    border-radius: 24px;
+    gap: 40px;
+    align-items: center;
+    max-width: 1200px ;
+    height: 350px;
+    flex-direction: column;
+    margin: 60px;
+
+}
+
+
+.hero-img img {
+    border-radius: 24px;
+    height: 600px;
+    max-width: 800px;
+    width: 800px;
+    margin-right: 20px;  /* فاصله از سمت راست (چون راست‌چین هستید) */
+    margin-left: 70px; 
+}
+
+.btn{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(39, 118, 236);
+    padding: 10px;
+    border-radius: 40px;
+    transition: background-color 0.4s ;
+}
+.btn:hover{
+    background-color:  rgb(74, 129, 211);
+}
+.features {
+    padding: 60px 20px;
+    background-color: #f9fafb;  /* کمی متفاوت از پس‌زمینه body برای تفکیک */
+}
+
+.features-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #1f2937;
+}
+.features-grid{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px
+}
+.feature-card{
+    display: grid;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 40px;
+    box-shadow: 0px 4px 12px rgba(2, 153, 253, 0.363);
+    gap: 40px;
+    margin-top: 40px;
+    transition: 1s;
+}
+.feature-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 1px 5px 13px rgba(0,0,0,0.05);
+}
+.foot{
+    display: flex;
+    justify-content: space-between;
+   padding: 40px;
+   background-color: #041b3b  ;
+   color: white;
+   border-top: 2px black solid ;
+   flex-direction: row;
+}
+.foot-links{
+    display: flex;
+    gap: 20px;
+}    
+.foot-links a{
+    display: flex;
+    text-decoration: none;
+    color: white;
+    gap: 20px;
+    transition: border-bottom 1s;
+    border-bottom: 3px solid transparent;
+}
+.foot-links a:hover{
+    color: rgb(0, 174, 255);
+}
+/* تبلت و موبایل بزرگ */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        margin: 40px 20px;
+        text-align: center;
+    }
+    .hero-text {
+        margin: 20px;
+        max-width: 100%;
+        height: auto;
+        min-height: 300px;
+    }
+    .hero-img img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        margin: 20px auto;
+        display: block;
+    }
+    .features-grid {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    .feature-card {
+        width: calc(50% - 20px);
+        margin-top: 20px;
+    }
+}
+
+/* موبایل */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 10px;
+    }
+    .LOGO {
+        width: 4em;
+        height: 4em;
+    }
+    .hero-text {
+        margin: 20px;
+        padding: 20px;
+    }
+    .feature-card {
+        width: 100%;
+    }
+    .foot {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 30px 15px;
+    }
+    .foot-links {
+        justify-content: center;
+    }
+}
+
+/* موبایل خیلی کوچک */
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+    .btn {
+        padding: 8px 20px;
+    }
+}
