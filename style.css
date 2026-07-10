@@ -31,14 +31,15 @@ header {
     display: none;
     position: absolute;
     top: 100%;
-    right: 0;
-    left: auto;
+    right: 0px;
+    left: 10px;
     background-color: rgba(255, 255, 255, 0.15);  /* شفافیت ساده */
     padding: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
-    z-index: 100;
+    z-index: 150;
     min-width: 60px;
+    margin-left: 200px;
 }
 
 /* برای خوانایی متن روی پس‌زمینه شفاف */
@@ -160,6 +161,16 @@ header {
 }
 .foot-links a:hover{
     color: rgb(0, 174, 255);
+}
+.account{
+    text-decoration: none;
+    color: black;
+        border-bottom: 3px solid transparent;
+
+    transition: border-bottom 1s;
+}
+.account:hover{
+        border-bottom: 3px rgb(1, 119, 255) solid;
 }
 /* تبلت و موبایل بزرگ */
 @media (max-width: 992px) {
