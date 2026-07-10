@@ -67,3 +67,26 @@ button:hover{
     padding: 10px;
 }
 
+
+/* 📱 حالت موبایل */
+@media (max-width: 768px) {
+
+    body {
+        padding: 15px; /* فاصله از کناره‌ها */
+    }
+
+    .menu-box {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
