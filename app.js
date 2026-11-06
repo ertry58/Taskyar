@@ -1,8 +1,8 @@
 const express = require("express")
 const app = express()
-const User = require("./database")
 const bcrypt = require("bcrypt")
 const session = require("express-session")
+const { User, Project } = require("./database")
 const user = null
 app.use(
 express.urlencoded({extended:true}))
@@ -12,7 +12,7 @@ app.use(session({
     saveUninitialized:false
 }))
 app.set('view engine','ejs')
-app.use(express.static(__dirname+"/public"))
+app.use(express.static("public"))
 app.get("/",async(req,res)=>{
     username = req.session.username
 await res.render("index",{username})
@@ -37,7 +37,7 @@ app.post("/loging",async(req,res)=>{
     }
     req.session.username = req.body.user
     if(euser){
-        res.send(`نام شما ${req.body.user}`)
+        res.redirect("/dashboard")
     }
 })
 app.post("/logout",async(req,res)=>{
@@ -69,10 +69,67 @@ app.post("/registering",async(req,res)=>{
     .save()
     
     req.session.username = req.body.user
-    res.redirect("/")
+    res.redirect("/dashboard")
 })
 app.get("/dashboard",async(req,res)=>{
-    await res.render()
+    if(req.session.username){
+           let user = req.session.username
+    let userC=  await User.findOne({username : user})
+    if(!userC){
+        return res.redirect("/login")
+    }
+    let objectID = userC._id;
+    let projects = await Project.find({user : objectID}).limit(2)
+    let allProject = await Project.find({user : objectID})
+        await res.render("dashboard",{projects: projects , allProject})}
+    else{
+        return res.redirect("/login")
+    }
+})
+
+    app.get("/edit/:id", async(req, res) => {
+    let project = await Project.findOne({_id : req.params.id})
+    res.render("edit",{project})
+});
+
+app.post("/edited/:id",async(req,res)=>{
+    let user = req.session.username 
+    let userFind = await User.findOne({username : user})
+    let project = await Project.findOne({_id : req.params.id , user: userFind._id})
+    project.name = req.body.name
+    project.expirement = req.body.expirment
+    await project.save()
+    res.redirect("/dashboard")
+})
+app.post("/delete/:id" , async(req,res)=>{
+        let user = req.session.username 
+    let userFind = await User.findOne({username : user})
+    let project = await Project.findOne({_id : req.params.id , user: userFind._id})
+    project.deleteOne()
+    res.redirect("/dashboard")
+})
+app.post("/projectMade",async(req,res,next)=>{
+    let user = req.session.username
+    let userC=  await User.findOne({username : user})
+    if(!userC){
+        return res.redirect("/login")
+    }
+    let objectID = userC._id;
+    await new Project({
+        name : req.body.name,
+        date : req.body.date,
+        expirement : req.body.expires,
+        progress : 0 ,
+        user :  objectID
+        
+    }).save()
+    res.redirect("/dashboard")
+})
+app.get("/projects",async(req,res)=>{
+    
+})
+app.post("/project",async(req,res)=>{
+    
 })
 
 app.listen("3000",console.log("ready"))
