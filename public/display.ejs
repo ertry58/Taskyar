@@ -1,0 +1,21 @@
+
+document.querySelector(".create-task").addEventListener("click",()=>{
+    document.querySelector(".works").style.display = "none"
+    document.querySelector(".new-project").style.display = "grid"
+    document.querySelector(".worksT").style.display = "grid"
+    document.querySelector(".projects").style.display = "none"
+})
+
+document.querySelector(".my-missions").addEventListener("click",()=>{
+    document.querySelector(".new-project").style.display = "none"
+    document.querySelector(".worksT").style.display = "none"
+    document.querySelector(".works").style.display = "none"
+    document.querySelector(".projects").style.display = "grid"
+})
+
+document.querySelector(".dashboard").addEventListener("click",()=>{
+        document.querySelector(".new-project").style.display = "none"
+    document.querySelector(".worksT").style.display = "none"
+    document.querySelector(".works").style.display = "grid"
+    document.querySelector(".projects").style.display = "none"
+})
