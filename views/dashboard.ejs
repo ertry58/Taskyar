@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد تسکیار</title>
+
+    <script src="https://kit.fontawesome.com/dbedc1eeba.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-calendar-pro/build/vanilla-calendar.min.css">
+
+    <style>
+        * {
+            font-family: Vazir, sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(234, 241, 241);
+        }
+
+        .header {
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.048);
+            padding: 3px;
+            margin: -8px;
+        }
+
+        .tasky {
+            width: 7em;
+            height: 7em;
+        }
+
+        .left-bar {
+            background-color: rgb(255, 255, 255);
+            width: 200px;
+            padding: 50px;
+            margin: 10px;
+            margin-top: 40px;
+            box-shadow: 0px 1px 6px 2px rgba(0, 0, 0, 0.048);
+            border-radius: 10px;
+            display: grid;
+            height: auto;
+            gap: 70px;
+            color: rgb(80, 78, 78);
+            position: relative;
+        }
+
+        .fa-calendar-check {
+            display: inline;
+        }
+
+        .dashboard,
+        .my-missions,
+        .create-task,
+        .statics,
+        .settings {
+            margin: -10px;
+            transition: 0.6s;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .dashboard:hover,
+        .my-missions:hover,
+        .create-task:hover,
+        .statics:hover,
+        .settings:hover {
+            color: rgb(2, 177, 247);
+            box-shadow: 0px 2px 0px 0px rgba(2, 77, 107, 0.199);
+            cursor: pointer;
+        }
+
+        .bars {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .center-bar {
+            position: relative;
+            right: 50px;
+            background-color: rgb(255, 255, 255);
+            margin: 5px;
+            margin-top: 40px;
+            box-shadow: 0px 1px 6px 2px rgba(0, 0, 0, 0.048);
+            border-radius: 10px;
+            display: grid;
+            padding: 30px;
+            width: 600px;
+        }
+
+        .feuters .calender {
+            background-color: rgb(255, 255, 255);
+            padding: 30px;
+            margin: 10px;
+            margin-top: 40px;
+            box-shadow: 0px 1px 6px 2px rgba(0, 0, 0, 0.048);
+            border-radius: 10px;
+            display: grid;
+            width: 300px;
+            height: 350px;
+            position: relative;
+        }
+
+        .feuters .progres {
+            background-color: rgb(255, 255, 255);
+            padding: 30px;
+            margin: 10px;
+            margin-top: 40px;
+            box-shadow: 0px 1px 6px 2px rgba(0, 0, 0, 0.048);
+            border-radius: 10px;
+            width: 300px;
+            height: 290px;
+            position: relative;
+            display: grid;
+        }
+
+        .feuters .progres .pro {
+            position: relative;
+            bottom: 149px;
+            left: 80px;
+            width: 150px;
+        }
+
+        .center-bar .works {
+            display: grid;
+            gap: 10px;
+        }
+
+        .center-bar .new-project {
+            display: none;
+        }
+
+        .center-bar .projects {
+            display: none;
+        }
+
+        .center-bar .proje {
+            border-radius: 10px;
+            box-shadow: 0px 2px 0px 0px rgba(2, 77, 107, 0.199);
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .center-bar .projects .editer{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>تسکیار</h1>
+        <img src="933e38f5-8e2d-4492-be19-d3a447599024 (1).png" alt="لوگوی تسکیار" class="tasky">
+    </div>
+
+    <div class="bars">
+
+        <div class="left-bar">
+
+            <div class="dashboard">
+                <i class="fa-solid fa-house"></i>
+                داشبورد
+            </div>
+
+            <div class="my-missions">
+                <i class="fa-solid fa-list-check"></i>
+                کار های من
+            </div>
+
+            <div class="create-task">
+                <i class="fa-solid fa-calendar-check"></i>
+                طراحی تسک
+            </div>
+
+            <div class="statics">
+                <i class="fa-solid fa-chart-simple"></i>
+                آمارها
+            </div>
+
+            <div class="settings">
+                <i class="fa-solid fa-gear"></i>
+                <a href="/"></a>
+                تنظیمات
+            </div>
+
+        </div>
+
+        <div class="center-bar">
+
+            <div class="works">
+
+                <h1 class="header1">تکالیف</h1>
+
+                <% if (projects.length > 0) { %>
+
+                    <% projects.forEach(pr => { %>
+
+                        <div class="proje">
+                            <h3><%= pr.name %></h3>
+                            <p><%= pr.expires %></p>
+                            <p><%= pr.progress %>%</p>
+                        </div>
+
+                    <% }) %>
+
+                <% } else { %>
+
+                    <h1>پروژه ای وجود ندارد</h1>
+
+                <% } %>
+
+            </div>
+
+            <div class="new-project">
+
+                <h1>ساخت پروژه</h1>
+
+                <form class="worksT" action="/projectMade" method="post">
+
+                    <label>نام تسک</label>
+                    <input type="text" name="name" required>
+
+                    <label>تاریخ شروع</label>
+                    <input type="date" name="date" required>
+
+                    <label>تاریخ پایان</label>
+                    <input type="date" name="expires" required>
+
+                    <button type="submit">ثبت</button>
+
+                </form>
+
+            </div>
+
+            <div class="projects">
+
+                <h1>تمام تسک ها</h1>
+
+                <% if (allProject.length > 0) { %>
+
+                    <% allProject.forEach(pr => { %>
+
+                        <div class="proje">
+                            <h3><%= pr.name %></h3>
+                            <p><%= pr.expires %></p>
+                            <p><%= pr.progress %>%</p>
+                            <a href="/edit/<%=pr._id%>">اصلاح</a>
+                            <form action="/delete/<%pr.id%>" method="post">
+                                <button type="submit">حذف </button>
+                            </form>
+                        </div>
+                        
+          
+                    <% }) %>
+
+                <% } else { %>
+
+                    <h1>پروژه ای وجود ندارد</h1>
+
+                <% } %>
+
+            </div>
+        
+        </div>
+
+        <div class="feuters">
+
+            <div class="calender">
+                <h2>تقویم</h2>
+                <div id="calendar"></div>
+            </div>
+
+            <div class="progres">
+                <h2>پیشرفت</h2>
+                <canvas class="canvas"></canvas>
+                <h3 class="pro">مقدار پیشرفت</h3>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script src="/canvas.js"></script>
+    <script src="/display.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-calendar-pro/build/vanilla-calendar.min.js"></script>
+
+    <script>
+        const calendar = new VanillaCalendar('#calendar');
+        calendar.init();
+    </script>
+
+</body>
+</html>
